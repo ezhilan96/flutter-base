@@ -1,0 +1,23 @@
+{
+	"Create DTO": {
+		"prefix": "dto",
+		"body": [
+			"import 'package:freezed_annotation/freezed_annotation.dart';",
+			"",
+			"part '${file_name}_dto.freezed.dart';",
+			"part '${file_name}_dto.g.dart';",
+			"",
+			"@freezed",
+			"class ${ClassName}Dto with _$${ClassName}Dto {",
+			"  const factory ${ClassName}Dto({",
+			"    int? id,",
+			"  }) = _${ClassName}Dto;",
+			"",
+			"  factory ${ClassName}Dto.fromJson(Map<String, dynamic> json) =>",
+			"      _$${ClassName}DtoFromJson(json);",
+			"}",
+			""
+		],
+		"description": "Log output to console"
+	}
+}
