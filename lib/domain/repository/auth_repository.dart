@@ -6,5 +6,5 @@ abstract class AuthRepository {
   Stream<bool> get loginStatus;
   Stream<UserDetailsDto?> get userDetails;
   Stream<DataResponse<UserDetailsDto?>> login(LoginDto loginRequest);
-  Future<DataResponse<dynamic>> logout();
+  Stream<DataResponse<dynamic>> logout();
 }

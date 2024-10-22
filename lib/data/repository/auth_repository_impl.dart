@@ -1,29 +1,42 @@
+import 'package:flutter_base/core/utils.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../domain/repository/auth_repository.dart';
+import '../datasource/local/preferences_datasource.dart';
 import '../dto/response/user/user_details_dto.dart';
+import '../datasource/remote/auth_datasource.dart';
 import '../dto/request/login/login_dto.dart';
 import '../core/data_response.dart';
+import '../core/utils.dart';
 
 @Singleton(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
-  @override
-  // TODO: implement loginStatus
-  Stream<bool> get loginStatus => throw UnimplementedError();
+  AuthRepositoryImpl(this.preferencesDS, this.authDS);
+
+  final PreferencesDataSource preferencesDS;
+  final AuthDatasource authDS;
 
   @override
-  // TODO: implement userDetails
-  Stream<UserDetailsDto?> get userDetails => throw UnimplementedError();
+  Stream<bool> get loginStatus =>
+      preferencesDS.userDetails.map((userDetails) => userDetails != null);
 
   @override
-  Stream<DataResponse<UserDetailsDto?>> login(LoginDto loginRequest) {
-    // TODO: implement login
-    throw UnimplementedError();
-  }
+  Stream<UserDetailsDto?> get userDetails => preferencesDS.userDetails;
 
   @override
-  Future<DataResponse> logout() {
-    // TODO: implement logout
-    throw UnimplementedError();
-  }
+  Stream<DataResponse<UserDetailsDto?>> login(LoginDto loginRequest) =>
+      authDS.login(loginRequest).mapSuccess(
+        (userDetails) {
+          userDetails?.let((it) => preferencesDS.setUserDetails(it));
+          return userDetails;
+        },
+      );
+
+  @override
+  Stream<DataResponse<dynamic>> logout() => authDS.logout().mapSuccess(
+        (data) {
+          preferencesDS.clearPreferences();
+          return data;
+        },
+      );
 }

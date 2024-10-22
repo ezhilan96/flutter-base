@@ -1,12 +1,10 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'dart:convert';
 
-import '../../core/constants.dart';
-import '../dto/response/error/error_dto.dart';
 import 'network_client.dart';
 import 'data_response.dart';
+import 'utils.dart';
 
 class NetworkDataSource {
   NetworkDataSource({
@@ -49,15 +47,5 @@ class NetworkDataSource {
     } catch (e) {
       yield Error();
     }
-  }
-}
-
-String parseErrorResponse(String responseBody) {
-  try {
-    return ErrorDto.fromJson(responseBody as Map<String, dynamic>)
-        .error
-        .message;
-  } catch (e) {
-    return StringRes.defaultError;
   }
 }
