@@ -22,4 +22,12 @@ import GoogleMaps
     GeneratedPluginRegistrant.register(with: self)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
+    
+    private func setGoogleApiKey(call: FlutterMethodCall,result: FlutterResult) {
+        if let jsonResult = call.arguments as? Dictionary<String, AnyObject> {
+            let googleMapsApiKey =  jsonResult["googleApiKey"] as? String ?? ""
+            GMSServices.provideAPIKey(googleMapsApiKey)
+        }
+        result(nil)
+    }
 }

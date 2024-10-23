@@ -18,3 +18,8 @@ class ConfigError extends AppState {}
 class ForceUpdate extends AppState {}
 
 class Block extends AppState {}
+
+class NetworkConnectionChange extends AppState {
+  final bool isConnected;
+  const NetworkConnectionChange(this.isConnected);
+}

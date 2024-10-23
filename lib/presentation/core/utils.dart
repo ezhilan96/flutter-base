@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base/core/utils.dart';
 // import 'dart:io';
 // import 'package:geolocator/geolocator.dart';
-// import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 extension DateTimeExtension on DateTime {
   int getDaysInMonth() {
@@ -59,11 +59,11 @@ double getWidgetWidth(GlobalKey key) {
   return renderBox?.size.width ?? 0;
 }
 
-// LatLng getCenterLatLng(LatLng p1, LatLng p2) {
-//   final double latM = (p1.latitude + p2.longitude) / 2;
-//   final double lngM = (p1.latitude + p2.longitude) / 2;
-//   return LatLng(latM, lngM);
-// }
+LatLng getCenterLatLng(LatLng p1, LatLng p2) {
+  final double latM = (p1.latitude + p2.longitude) / 2;
+  final double lngM = (p1.latitude + p2.longitude) / 2;
+  return LatLng(latM, lngM);
+}
 
 // Future<Position?> getCurrentLocation() async {
 //   final isServiceEnabled = await Geolocator.isLocationServiceEnabled();

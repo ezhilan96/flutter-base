@@ -14,7 +14,8 @@ class StreamedSharedPreferences {
     dynamic Function(Map<String, dynamic> json) fromJson,
   ) async* {
     _pref ??= await SharedPreferences.getInstance();
-    final controller = _controllers[key] ??= StreamController<dynamic>();
+    final controller =
+        _controllers[key] ??= StreamController<dynamic>.broadcast();
     final json = _pref!.getString(key);
     json == null
         ? controller.add(null)

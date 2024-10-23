@@ -13,7 +13,7 @@ Future<void> showAlertDialog({
     barrierDismissible: isDismissible,
     context: context,
     builder: (BuildContext context) => AlertDialog(
-      // backgroundColor: CustomColors.backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
       content: Text(message),
       actions: <Widget>[
         if (positiveButtonAction != null)

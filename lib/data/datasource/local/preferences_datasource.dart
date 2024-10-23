@@ -8,9 +8,10 @@ import '../../core/streamed_shared_preferences.dart';
 
 @singleton
 class PreferencesDataSource extends StreamedSharedPreferences {
-  Stream<UserDetailsDto?> get userDetails =>
-      (observe(KeyRes.userDetails, (json) => UserDetailsDto.fromJson(json))
-          as Stream<UserDetailsDto?>);
+  Stream<UserDetailsDto?> get userDetails => observe(
+        KeyRes.userDetails,
+        (json) => UserDetailsDto.fromJson(json),
+      ).map((data) => data as UserDetailsDto?);
 
   Future<void> setUserDetails(UserDetailsDto dto) =>
       set(KeyRes.userDetails, dto.toJson());
