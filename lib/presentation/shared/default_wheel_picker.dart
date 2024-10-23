@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../config/color_scheme.dart';
+import '../config/color_scheme.dart';
 
 class DefaultWheelPicker extends StatefulWidget {
   const DefaultWheelPicker({

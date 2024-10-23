@@ -5,7 +5,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import '../domain/entity/app_state.dart';
 import 'screens/home/dashboard/dashboard_screen.dart';
-import 'shared/widget/nointernet_screen.dart';
+import 'shared/nointernet_screen.dart';
 import 'screens/auth/login/login_screen.dart';
 import 'config/theme.dart';
 import 'app_cubit.dart';

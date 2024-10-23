@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../../../shared/dialog/default_alert_dialog.dart';
+import '../../../shared/default_alert_dialog.dart';
 import '../viewmodel.dart';
 import 'vm_builder.dart';
 
