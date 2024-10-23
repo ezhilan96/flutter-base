@@ -1,11 +1,13 @@
-import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import '../domain/entity/app_state.dart';
-import 'app_cubit.dart';
+import 'screens/home/dashboard/dashboard_screen.dart';
+import 'screens/auth/login/login_screen.dart';
 import 'config/theme.dart';
+import 'app_cubit.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -35,10 +37,10 @@ class _AppState extends State<App> {
                   _initApp(state.apiKey);
                 } else if (state is UnAuthorized) {
                   FlutterNativeSplash.remove();
-                  // _navigator.pushAndRemoveUntil(
-                  //   LoginScreen.route(),
-                  //   (_) => false,
-                  // );
+                  _navigator.pushAndRemoveUntil(
+                    LoginScreen.route(),
+                    (_) => false,
+                  );
                 } else if (state is Premium) {
                   FlutterNativeSplash.remove();
                   // Take action for premium users
@@ -66,10 +68,10 @@ class _AppState extends State<App> {
     final requestData = {"googleApiKey": apiKey};
     platform.invokeMethod('setGoogleApiKey', requestData).then((value) {
       FlutterNativeSplash.remove();
-      // _navigator.pushAndRemoveUntil(
-      //   Home.route(),
-      //   (_) => false,
-      // );
+      _navigator.pushAndRemoveUntil(
+        DashboardScreen.route(),
+        (_) => false,
+      );
     });
   }
 }
