@@ -76,6 +76,15 @@ extension DataResponseExt<T> on DataResponse<T> {
 }
 
 extension DataResponseStreamExt<T> on Stream<DataResponse<T>> {
+  Stream<DataResponse<T>> also(void Function(T data) action) async* {
+    await for (final DataResponse<T> response in this) {
+      if (response is Success) {
+        action((response as Success).data);
+      }
+      yield response;
+    }
+  }
+
   Stream<DataResponse<C>> mapSuccess<C>(
     C Function(T data) onSuccess,
   ) async* {

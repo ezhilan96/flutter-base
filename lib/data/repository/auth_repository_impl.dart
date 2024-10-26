@@ -25,18 +25,14 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Stream<DataResponse<UserDetailsDto?>> login(LoginDto loginRequest) =>
-      authDS.login(loginRequest).mapSuccess(
+      authDS.login(loginRequest).also(
         (userDetails) {
           userDetails?.let((it) => preferencesDS.setUserDetails(it));
-          return userDetails;
         },
       );
 
   @override
-  Stream<DataResponse<dynamic>> logout() => authDS.logout().mapSuccess(
-        (data) {
-          preferencesDS.clearPreferences();
-          return data;
-        },
+  Stream<DataResponse<dynamic>> logout() => authDS.logout().also(
+        (data) => preferencesDS.clearPreferences(),
       );
 }
