@@ -6,8 +6,8 @@ import 'network_client.dart';
 import 'data_response.dart';
 import 'utils.dart';
 
-class NetworkDataSource {
-  NetworkDataSource({
+class NetworkManager {
+  NetworkManager({
     required String baseUrl,
     Stream<String?>? token,
     this.onUnAuthorized,

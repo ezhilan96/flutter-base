@@ -9,7 +9,7 @@ import '../../config/endpoints.dart';
 import '../local/preferences_datasource.dart';
 
 @singleton
-class AuthDatasource extends NetworkDataSource {
+class AuthDatasource extends NetworkManager {
   AuthDatasource(PreferencesDataSource preferences)
       : super(
           baseUrl: StringRes.baseUrl,
