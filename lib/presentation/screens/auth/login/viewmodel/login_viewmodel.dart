@@ -27,15 +27,12 @@ class LoginViewModel extends ViewModel<LoginState> {
 
   final AuthActions _authActions;
 
-  Future<void> _init() async {
+  void _init() {
     final loginRequest = LoginDto(id: uiState.flag ? 1 : 2);
-    _authActions.login(loginRequest).handleDataResponseUi(
-      this,
-      onSuccess: (userDetails) {
-        setUiState(uiState.copyWith(
-          flag: userDetails?.id == 1,
-        ));
-      },
-    );
+    _authActions.login(loginRequest).handleDataResponse(
+          this,
+          onSuccess: (userDetails) =>
+              setUiState(uiState.copyWith(flag: userDetails?.id == 1)),
+        );
   }
 }

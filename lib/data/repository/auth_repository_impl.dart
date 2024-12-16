@@ -7,7 +7,6 @@ import '../dto/response/user/user_details_dto.dart';
 import '../datasource/remote/auth_datasource.dart';
 import '../dto/request/login/login_dto.dart';
 import '../core/data_response.dart';
-import '../core/utils.dart';
 
 @Singleton(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
@@ -18,10 +17,10 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Stream<bool> get loginStatus =>
-      preferencesDS.userDetails.map((userDetails) => userDetails != null);
+      preferencesDS.userDetailStream.map((userDetails) => userDetails != null);
 
   @override
-  Stream<UserDetailsDto?> get userDetails => preferencesDS.userDetails;
+  Stream<UserDetailsDto?> get userDetails => preferencesDS.userDetailStream;
 
   @override
   Stream<DataResponse<UserDetailsDto?>> login(LoginDto loginRequest) =>

@@ -40,7 +40,6 @@ dart run flutter_native_splash:create --flutter_native_splash.yaml
 located at /app_snippets.json
 
 ## Checklist
-
 * Change package name
 * Change appName
 * Change app icon
@@ -49,3 +48,18 @@ located at /app_snippets.json
 * Remove libraries*
 * Remove Platform channel implementation & google_api_key*
 * Change base url
+* Firebase configuration
+
+## Deployment
+flutter build appbundle\
+flutter build ipa\
+Debug symbols:
+[YOUR_PROJECT]\build\app\intermediates\merged_native_libs\release\out\lib: 
+    arm64-v8a
+    armeabi-v7a
+    x86_64
+for macOS: zip -d Archive.zip "__MACOSX*"
+
+flutter run --dart-define=ENV=uat
+flutter run --dart-define=ENV=prod
+
