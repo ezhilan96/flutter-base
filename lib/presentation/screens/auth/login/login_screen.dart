@@ -4,6 +4,7 @@ import '../../../core/viewmodel/widget/vm_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
+  static const String routeName = '/login';
   static Route<void> route() =>
       MaterialPageRoute<void>(builder: (_) => const LoginScreen());
 

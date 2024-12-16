@@ -4,6 +4,7 @@ import 'viewmodel/dashboard_viewmodel.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
+  static const routeName = '/dashboard';
   static Route<void> route() =>
       MaterialPageRoute<void>(builder: (_) => const DashboardScreen());
 

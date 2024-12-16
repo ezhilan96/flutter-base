@@ -60,6 +60,6 @@ Debug symbols:
     x86_64
 for macOS: zip -d Archive.zip "__MACOSX*"
 
-flutter run --dart-define=ENV=uat
+flutter run --dart-define=ENV=uat\
 flutter run --dart-define=ENV=prod
 
