@@ -39,7 +39,7 @@ dart run flutter_native_splash:create --flutter_native_splash.yaml
 ### App snippets:
 located at /app_snippets.json
 
-## Checklist
+## New app checklist
 * Change package name
 * Change appName
 * Change app icon
@@ -53,13 +53,28 @@ located at /app_snippets.json
 ## Deployment
 flutter build appbundle\
 flutter build ipa\
-Debug symbols:
-[YOUR_PROJECT]\build\app\intermediates\merged_native_libs\release\out\lib: 
-    arm64-v8a
-    armeabi-v7a
-    x86_64
+Debug symbols:\
+[YOUR_PROJECT]\build\app\intermediates\merged_native_libs\release\out\lib:\
+&emsp;arm64-v8a\
+&emsp;armeabi-v7a\
+&emsp;x86_64\
 for macOS: zip -d Archive.zip "__MACOSX*"
 
 flutter run --dart-define=ENV=uat\
-flutter run --dart-define=ENV=prod
+flutter run --dart-define=ENV=prod\
 
+## Firebase integration [(FlutterFire)](https://firebase.flutter.dev/docs/overview)
+Create Firebase project in [console](https://console.firebase.google.com)\
+Install [Firebase cli](https://firebase.google.com/docs/cli)\
+firebase logout && firebase login\
+dart pub global activate flutterfire_cli\
+Then, at the root of your Flutter project directory,\
+&emsp;flutterfire configure\
+flutter pub add firebase_core\
+add below lines in main.dart,\
+&emsp;WidgetsFlutterBinding.ensureInitialized();\
+&emsp;await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+## FCM Setup
+flutter pub add firebase_messaging\
+### iOS ([APNs Setup](https://firebase.flutter.dev/docs/messaging/apple-integration))
